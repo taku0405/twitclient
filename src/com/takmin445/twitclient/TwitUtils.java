@@ -48,7 +48,7 @@ public class TwitUtils {
 	}
 	
 	public static boolean hasAccessToken(Context context){
-		return loadAccessToken(context)!=null;
+		return loadAccessToken(context) != null;
 	}
 
 }

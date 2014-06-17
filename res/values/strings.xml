@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="twitter_consumer_key">decE1sYNVSe1ZcKhc0UBz0fdl</string>
     <string name="twitter_consumer_secret">WdJW1Bopc6P6PHJJJnYjP3ABLwCA0eeyQTnZQhOPbEWgbSUhbA</string>
+    <string name="twitter_oauth">認証</string>
     
 
 </resources>
