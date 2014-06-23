@@ -3,7 +3,10 @@ package com.takmin445.twitclient;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.loopj.android.image.SmartImageView;
+
 import twitter4j.ResponseList;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -47,25 +51,56 @@ public class MainActivity extends ListActivity {
 		}
 	}
 	
-	private class TweetAdapter extends ArrayAdapter<String>{
+	private class TweetAdapter extends ArrayAdapter<Status>{
+		
+		private LayoutInflater mInflater;
 		
 		public TweetAdapter(Context context){
 			super(context, android.R.layout.simple_list_item_1);
+			mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+		}
+		
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent){
+			if(convertView == null){
+				convertView = mInflater.inflate(R.layout.list_item_tweet, null);
+			}
+			Status item = getItem(position);
+			/*
+			 * 名前取得
+			 */
+			TextView name = (TextView)convertView.findViewById(R.id.name);
+			name.setText(item.getUser().getName());
+			
+			/*
+			 * スクリーンネーム取得
+			 */
+			TextView screenName = (TextView)convertView.findViewById(R.id.screen_name);
+			screenName.setText("@"+item.getUser().getScreenName());
+			
+			/*
+			 * 本文取得
+			 */
+			TextView text = (TextView)convertView.findViewById(R.id.text);
+			text.setText(item.getText());
+			
+			/*
+			 * アイコン取得
+			 */
+			SmartImageView icon = (SmartImageView)convertView.findViewById(R.id.icon);
+			icon.setImageUrl(item.getUser().getProfileImageURLHttps());
+			
+			return convertView;
 		}
 	}
 	
 	private void reloadTimeLine(){
-		AsyncTask<Void, Void, List<String>> task = new AsyncTask<Void, Void, List<String>>(){
+		AsyncTask<Void, Void, List<twitter4j.Status>> task = new AsyncTask<Void, Void, List<twitter4j.Status>>(){
 			
 			@Override
-			protected List<String> doInBackground(Void... params){
+			protected List<twitter4j.Status> doInBackground(Void... params){
 				try{
-					ResponseList<twitter4j.Status> timeline = mTwitter.getHomeTimeline();
-					ArrayList<String> list = new ArrayList<String>();
-					for (twitter4j.Status status : timeline){
-						list.add(status.getText());
-					}
-					return list;
+					return mTwitter.getHomeTimeline();
 				}catch (TwitterException e){
 					e.printStackTrace();
 				}
@@ -73,10 +108,10 @@ public class MainActivity extends ListActivity {
 			}
 			
 			@Override
-			protected void onPostExecute(List<String> result){
+			protected void onPostExecute(List<twitter4j.Status> result){
 				if(result != null){
 					mAdapter.clear();
-					for(String status : result){
+					for(twitter4j.Status status : result){
 						mAdapter.add(status);
 					}
 					getListView().setSelection(0);
