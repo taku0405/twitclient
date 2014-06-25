@@ -33,6 +33,8 @@
                 <data android:host="twitter" android:scheme="hoge" />
             </intent-filter>
         </activity>
+        <activity android:name=".TweetActivity"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

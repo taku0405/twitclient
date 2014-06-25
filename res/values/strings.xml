@@ -8,6 +8,7 @@
     <string name="twitter_consumer_secret">WdJW1Bopc6P6PHJJJnYjP3ABLwCA0eeyQTnZQhOPbEWgbSUhbA</string>
     <string name="twitter_oauth">認証</string>
     <string name="twitter_callback_url">hoge://twitter</string>
-    
+    <string name="menu_refresh">更新</string>
+    <string name="menu_tweet">つぶやく</string>
 
 </resources>
