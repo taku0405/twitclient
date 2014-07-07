@@ -18,6 +18,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -51,6 +53,7 @@ public class MainActivity extends ListActivity {
 		}
 	}
 	
+	//TL
 	private class TweetAdapter extends ArrayAdapter<Status>{
 		
 		private LayoutInflater mInflater;
@@ -94,6 +97,7 @@ public class MainActivity extends ListActivity {
 		}
 	}
 	
+	//TL再読み込み
 	private void reloadTimeLine(){
 		AsyncTask<Void, Void, List<twitter4j.Status>> task = new AsyncTask<Void, Void, List<twitter4j.Status>>(){
 			
@@ -122,6 +126,8 @@ public class MainActivity extends ListActivity {
 		};
 		task.execute();
 	}
+	
+
 	
 	private void showToast(String text){
 		Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
