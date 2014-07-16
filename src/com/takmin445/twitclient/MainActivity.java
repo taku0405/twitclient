@@ -3,6 +3,7 @@ package com.takmin445.twitclient;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.image.SmartImageView;
 
 import twitter4j.ResponseList;
@@ -34,6 +35,7 @@ public class MainActivity extends ListActivity {
 
 	private TweetAdapter mAdapter;
 	private Twitter mTwitter;
+	private PullToRefreshListView mListView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,12 @@ public class MainActivity extends ListActivity {
 			mTwitter = TwitUtils.getTwitterInstance(this);
 			reloadTimeLine();
 		}
+		
+		//項目初期化
+		//initializeItems();
 	}
 	
-	//TL
+	//TL表示
 	private class TweetAdapter extends ArrayAdapter<Status>{
 		
 		private LayoutInflater mInflater;
@@ -120,7 +125,7 @@ public class MainActivity extends ListActivity {
 					}
 					getListView().setSelection(0);
 				}else{
-					showToast("なにかがおかしいみたい");
+					showToast("接続エラー");
 				}
 			}
 		};
@@ -178,5 +183,7 @@ public class MainActivity extends ListActivity {
 			return rootView;
 		}
 	}
+	
+	
 
 }

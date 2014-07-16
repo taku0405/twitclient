@@ -10,6 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/listView"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
         <TextView
             android:id="@+id/screen_name"
             android:layout_width="wrap_content"

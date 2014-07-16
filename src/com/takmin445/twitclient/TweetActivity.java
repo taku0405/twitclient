@@ -56,10 +56,10 @@ public class TweetActivity extends Activity {
 			@Override
 			protected void onPostExecute(Boolean result){
 				if(result){
-					showToast("Tweeted!");
+					showToast("ツイートしました.");
 					finish();
 				}else{
-					showToast("Failed...");
+					showToast("ツイート失敗しました. 再度ツイートしてください.");
 				}
 			}
 		};
@@ -92,6 +92,9 @@ public class TweetActivity extends Activity {
 //		}
 //	});
 	
+	/*
+	 * 残り文字数
+	 */
 	class TweetWordsCount implements TextWatcher{
 		public void onTextChanged(CharSequence s, int start, int before, int count){
 			int remain = MAX_INPUT_LENGTH - mInputText.getText().length();
