@@ -47,7 +47,7 @@ public class TweetActivity extends Activity {
 			protected Boolean doInBackground(String... params){
 				try{
 					mTwitter.updateStatus(params[0]);//投稿
-					reloadTimeLine();//TL更新
+					MainActivity.reloadTimeLine();//TL更新
 					return true;
 				}catch(TwitterException e){
 					e.printStackTrace();
