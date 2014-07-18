@@ -46,7 +46,8 @@ public class TweetActivity extends Activity {
 			@Override
 			protected Boolean doInBackground(String... params){
 				try{
-					mTwitter.updateStatus(params[0]);
+					mTwitter.updateStatus(params[0]);//投稿
+					reloadTimeLine();//TL更新
 					return true;
 				}catch(TwitterException e){
 					e.printStackTrace();
@@ -59,7 +60,7 @@ public class TweetActivity extends Activity {
 					showToast("ツイートしました.");
 					finish();
 				}else{
-					showToast("ツイート失敗しました. 再度ツイートしてください.");
+					showToast("ツイート失敗しました. ネットワークの状態を確認してください.");
 				}
 			}
 		};
