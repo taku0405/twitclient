@@ -156,9 +156,13 @@ public class MainActivity extends ListActivity {
 			return true;
 		}
 		switch(item.getItemId()){
+		
+		//更新ボタン
 		case R.id.menu_refresh:
 			reloadTimeLine();
 			return true;
+		
+		//ツイートボタン
 		case R.id.menu_tweet:
 			Intent intent = new Intent(this, TweetActivity.class);
 			startActivity(intent);
