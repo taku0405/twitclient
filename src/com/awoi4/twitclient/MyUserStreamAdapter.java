@@ -1,4 +1,4 @@
-package com.takmin445.twitclient;
+package com.awoi4.twitclient;
 
 public class MyUserStreamAdapter {
 

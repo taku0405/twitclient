@@ -1,4 +1,4 @@
-package com.takmin445.twitclient;
+package com.awoi4.twitclient;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.os.Build;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends ListActivity{
 
 	private TweetAdapter mAdapter;
 	private Twitter mTwitter;
